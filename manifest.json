@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Jira Local Time Tracker",
+  "version": "1.1",
+  "description": "Local tracking and editing of work time for Jira tasks.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

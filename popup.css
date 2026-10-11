@@ -1,0 +1,175 @@
+:host {
+  --main-color: #0052cc;
+  --danger-color: #ff5630;
+  --danger-secondary-color: hsl(from var(--danger-color) h s calc(l + 10) );
+
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  width: 380px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: #333;
+}
+
+h2 {
+  margin-top: 0;
+  color: var(--main-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dfe1e6;
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  background: #f4f5f7;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.filter-section label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #42526e;
+}
+
+.filter-section input {
+  flex: 1;
+}
+
+input {
+  padding: 6px;
+  border: 2px solid #dfe1e6;
+  border-radius: 3px;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+input:focus {
+  border-color: #4c9aff;
+  outline: none;
+}
+
+button {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: hsl(from var(--main-color) h s calc(l + 10) );
+}
+
+#cancelBtn, .stop-btn {
+  background-color: var(--danger-color);
+}
+
+#cancelBtn:hover, .stop-btn:hover {
+  background-color: var(--danger-secondary-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th, td {
+  text-align: left;
+  padding: 6px;
+  border-bottom: 1px solid #dfe1e6;
+  vertical-align: top;
+}
+
+table td:nth-child(2) {
+  min-width: 82px;
+}
+
+.active-row {
+  background-color: #e3fcef;
+}
+
+.active-row td {
+  border-bottom: 2px solid #36b37e;
+}
+
+.task-name {
+  cursor: pointer;
+}
+
+.task-name:hover {
+  text-decoration: underline;
+  color: var(--main-color);
+}
+
+.live-time {
+  font-weight: bold;
+  color: #006644;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: var(--main-color);
+  cursor: pointer;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+.delete-btn {
+  color: var(--danger-color);
+}
+
+.actions-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.actions-cell .action-btn {
+  font-size: 14px;
+  line-height: 1;
+  padding: 2px;
+}
+
+#clearFilterBtn {
+  color: var(--danger-color);
+}
+
+.hidden {
+  display: none !important;
+}
+
+#activeTaskView {
+  background: #e3fcef;
+  border: 1px solid #36b37e;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+#activeTaskView p {
+  margin: 0 0 6px 0;
+}
+
+#activeTaskView button {
+  width: 100%;
+}
+
+.worklog-section {
+  overflow: auto;
+  max-height: 290px;
+}
