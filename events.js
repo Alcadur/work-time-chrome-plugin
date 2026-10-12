@@ -2,7 +2,6 @@
  * @type {Readonly<{ [key: string]: string }>}
  */
 export const EVENTS = {
-    formSubmit: Symbol(),
     startTask: 'start-task',
     saveTask: 'save-task',
     finishTask: 'finish-task',
