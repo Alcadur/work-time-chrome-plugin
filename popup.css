@@ -16,6 +16,27 @@ h2 {
   color: var(--main-color);
 }
 
+.view-container {
+  display: flex;
+  overflow-x: hidden;
+  gap: 10px;
+}
+
+.view {
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  will-change: margin-left;
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}
+
+.view.extra-view {
+  margin-left: -100%;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -71,6 +92,19 @@ button {
 
 button:hover {
   background-color: hsl(from var(--main-color) h s calc(l + 10) );
+}
+
+button.link-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-weight: normal;
+  font-size: 14px;
+  color: var(--main-color);
+}
+
+button.link-btn:hover {
+  text-decoration: underline;
 }
 
 #cancelBtn, .stop-btn {

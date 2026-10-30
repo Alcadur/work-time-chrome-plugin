@@ -13,6 +13,7 @@
 - Automatic task name from Jira
 - Edit / delete log
 - Log history
+- Export logs to CSV (Tempo import format)
 
 ### How to use
 
@@ -76,3 +77,20 @@ It works on all Jira pages, so when you open the extension on a page that is not
 - (optional) Group tasks by name
 
 [![chrome-TNN35Wu7Es.gif](https://i.postimg.cc/qvGCHXQy/chrome-TNN35Wu7Es.gif)](https://postimg.cc/4Ym3zcDx)
+
+#### Export to CSV (Tempo)
+
+- Click on the extension icon
+- Click the "Open log list" button
+- Select the date range ("From" / "To")
+- Click "CSV"
+
+The file follows the [Tempo import format](https://help.tempo.io/timetracker/latest/exporting-and-importing-reports):
+`Issue Key, Date Started, Time Spent, Comment`
+
+- **Issue Key** – taken from the task name (ex. `[XYZ-123] Summary` → `XYZ-123`)
+- **Date Started** – log start in UTC (`YYYY-MM-DD HH:MM:SSZ`)
+- **Time Spent** – ex. `2h 30m`
+- **Comment** – text between `>>` and `<<` (`>>My coment<<`)
+
+Logs without a Jira issue key and unfinished logs are skipped.
