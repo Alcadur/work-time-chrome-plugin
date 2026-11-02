@@ -204,6 +204,7 @@ table td:nth-child(2) {
 }
 
 .worklog-section {
+  padding-top: 15px;
   overflow: auto;
   max-height: 290px;
 }

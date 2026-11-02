@@ -1,6 +1,6 @@
 import { EventBus, EVENTS } from "../events.js";
 import { getWorklogs } from "../storageUtils.js";
-import { getDateFromIso, getTimeFromIso } from "../timeUtils.js";
+import { formatFinalTime, getDateFromIso, getTimeFromIso, logTimeToMs } from "../timeUtils.js";
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -13,6 +13,10 @@ template.innerHTML = `
   </style>
 
   <div class="worklog-section">
+  <div class="total-time-wrapper">
+    Total time:
+    <span id="totalTimeValue">0</span>
+  </div>
   <table id="worklogTable">
     <thead>
       <tr>
@@ -35,12 +39,16 @@ class TrackerLogs extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.worklogBody = this.shadowRoot.getElementById('worklogBody');
+        this.cacheDOM();
         this.bindEvents();
     }
 
     connectedCallback() {
         this.filter = ''
-        this.render();
+    }
+
+    cacheDOM() {
+        this.totalTimeValue = this.shadowRoot.getElementById('totalTimeValue');
     }
 
     bindEvents() {
@@ -73,6 +81,19 @@ class TrackerLogs extends HTMLElement {
         return logsToRender;
     }
 
+    updateTotalLogTime() {
+        const logsToRender = this.getLogsToRender();
+        let totalTimeInMs = 0;
+
+        logsToRender.forEach(item => {
+            totalTimeInMs += logTimeToMs(item.log.time);
+        });
+
+
+
+        this.totalTimeValue.textContent = formatFinalTime(totalTimeInMs);
+    }
+
     render() {
         this.worklogBody.innerHTML = '';
         const logsToRender = this.getLogsToRender();
@@ -81,6 +102,8 @@ class TrackerLogs extends HTMLElement {
             this.worklogBody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #6b778c;">No entries.</td></tr>`;
             return;
         }
+
+        this.updateTotalLogTime();
 
         logsToRender.forEach(item => {
             const row = document.createElement('tr');

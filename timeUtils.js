@@ -40,6 +40,27 @@ export function formatFinalTime (ms) {
     return `${minutes}m`;
 }
 
+/**
+ *
+ * @param {string} logTime - format: 1h 1m
+ *
+ * @example
+ * const mins = logTimeToMin('1h 1m');
+ * console.log(mins); // expected 61
+ *
+ * @example
+ * const mins = logTimeToMin('2h 30m');
+ * console.log(mins); // expected 150
+ *
+ * @returns {number}
+ */
+export function logTimeToMs (logTime) {
+    const hours = Number(logTime.match(/^(\d+)h/)?.[1] ?? 0)
+    const mins = Number(logTime.match(/(\d+)m$/)?.[1] ?? 0)
+
+    return (hours * 60 + mins) * 60 * 1000;
+}
+
 export function formatLocalDateOnly(date) {
     return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
