@@ -85,6 +85,8 @@ It works on all Jira pages, so when you open the extension on a page that is not
 - Select the date range ("From" / "To")
 - Click "CSV"
 
+[![1CAse-Wjfjq.gif](https://i.postimg.cc/sXbhL4M5/1CAse-Wjfjq.gif)](https://postimg.cc/7GMhG7ML)
+
 The file follows the [Tempo import format](https://help.tempo.io/timetracker/latest/exporting-and-importing-reports):
 `Issue Key, Date Started, Time Spent, Comment`
 
